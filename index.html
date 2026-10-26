@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Duel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <h1>Number&nbsp;Duel</h1>
+    <p class="subtitle">Pick a secret number for the CPU to hunt down, then race to find theirs first.</p>
+
+    <section id="setup-phase" class="panel">
+      <h2>Choose your secret number</h2>
+      <p>The CPU will try to guess it. Pick anything from 1 to 100.</p>
+      <form id="setup-form">
+        <input type="number" id="secret-input" min="1" max="100" required autocomplete="off" placeholder="1-100">
+        <button type="submit">Start Duel</button>
+      </form>
+      <p id="setup-error" class="error" role="alert"></p>
+    </section>
+
+    <section id="duel-phase" class="panel hidden">
+      <div class="scoreboard">
+        <div class="side">
+          <h3>You guess CPU's number</h3>
+          <p class="hint">Range: <span id="player-range">1 - 100</span></p>
+        </div>
+        <div class="vs">VS</div>
+        <div class="side">
+          <h3>CPU guesses your number</h3>
+          <p class="hint">Attempts so far: <span id="cpu-attempts">0</span></p>
+        </div>
+      </div>
+
+      <form id="guess-form">
+        <input type="number" id="guess-input" min="1" max="100" required autocomplete="off" placeholder="Your guess">
+        <button type="submit">Guess</button>
+      </form>
+      <p id="guess-error" class="error" role="alert"></p>
+
+      <div class="log-columns">
+        <div class="log-column">
+          <h4>Your guesses</h4>
+          <ol id="player-log" class="log"></ol>
+        </div>
+        <div class="log-column">
+          <h4>CPU's guesses</h4>
+          <ol id="cpu-log" class="log"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="result-phase" class="panel hidden">
+      <h2 id="result-title"></h2>
+      <p id="result-detail"></p>
+      <button id="rematch-button">Rematch</button>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
